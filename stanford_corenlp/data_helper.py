@@ -112,7 +112,7 @@ def request_features_from_stanford(data_dir, flag):
 
 
     all_data = []
-    with StanfordCoreNLP(FULL_MODEL, lang='en', port=randint(38400, 38596)) as nlp:
+    with StanfordCoreNLP(FULL_MODEL, lang='zh', port=randint(38400, 38596)) as nlp:
         for sentence in tqdm(sentences_str):
 
             props = {
@@ -120,7 +120,7 @@ def request_features_from_stanford(data_dir, flag):
                 'annotators': 'pos, parse, depparse',
                 'tokenize.whitespace': 'true',
                 'ssplit.eolonly': 'true',
-                'pipelineLanguage': 'en', # 很关键，中文使用zh
+                'pipelineLanguage': 'zh', # 很关键，中文使用zh
                 'outputFormat': 'json'}
             results = nlp.annotate(sentence, properties=props)
             # results = nlp.request(annotators='deparser', data=sentence)
